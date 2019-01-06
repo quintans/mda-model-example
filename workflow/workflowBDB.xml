@@ -25,24 +25,27 @@ xsi:schemaLocation="http://www.mda.quintans.pt http://www.mda.quintans.pt/dsl/wo
 			<map name="stereotype" value="Entity"/>
 			<map name="template" value="mysql/TableDrop.ftl" />
 			<map name="groupby" value="namespace"/> 
-			<map name="destination" value="../generated/${group}/sql/00_drop_tables.sql"/> 
+			<map name="destination" value="../generated/${groupkey}/sql/00_drop_tables.sql"/> 
 			<map name="copy" value="overwrite" />
 		</transform>
-		<!-- 
+
 		<transform type="pt.quintans.mda.custom.AllInOneM2T" description="Table description">
 			<map name="stereotype" value="Entity"/>
 			<map name="template" value="mysql/TableDescribe.ftl" />
-			<map name="destination" value="../generated/${entity.namespace}/html/tables.html"/> 
+			<map name="groupby" value="namespace"/> 
+			<map name="destination" value="../generated/${groupkey}/html/tables.html"/> 
 			<map name="copy" value="overwrite" />
 		</transform>
 
 		<transform type="pt.quintans.mda.enterprise.custom.AllInOneMigrateM2T" description="Table SQL">
 			<map name="stereotype" value="Entity"/>
 			<map name="template" value="mysql/Tables.ftl" />
-			<map name="destination" value="../generated/${entity.namespace}/sql/01_create.sql"/> 
+			<map name="groupby" value="namespace"/> 
+			<map name="destination" value="../generated/${groupkey}/sql/01_create.sql"/> 
 			<map name="copy" value="overwrite" />
 		</transform>
 		
+		<!-- 
 		<transform type="pt.quintans.mda.custom.AllModel2Text" description="Constraints SQL">
 			<map name="stereotype" value="Entity"/>
 			<map name="template" value="mysql/Constraint.ftl" />
@@ -81,21 +84,24 @@ xsi:schemaLocation="http://www.mda.quintans.pt http://www.mda.quintans.pt/dsl/wo
         <transform type="pt.quintans.mda.custom.AllInOneM2T" description="Classes (ER) Diagram">
             <map name="stereotype" value="Entity"/>
             <map name="template" value="dot/classes.pu.ftl" />
-            <map name="destination" value="../generated/${entity.namespace}/dot_classes.pu"/> 
+            <map name="groupby" value="namespace"/> 
+            <map name="destination" value="../generated/${groupkey}/dot_classes.pu"/> 
             <map name="copy" value="overwrite" />
         </transform>
 
 		<transform type="pt.quintans.mda.custom.AllInOneM2T" description="small UML dot">
 			<map name="stereotype" value="Entity"/>
 			<map name="template" value="dot/uml_small.ftl" />
-			<map name="destination" value="../generated/${entity.namespace}/dot_uml_small.dot"/> 
+			<map name="groupby" value="namespace"/> 
+			<map name="destination" value="../generated/${groupkey}/dot_uml_small.dot"/> 
 			<map name="copy" value="injectCustom" />
 		</transform>
 		
 		<transform type="pt.quintans.mda.custom.AllInOneM2T" description="ER dot">
 			<map name="stereotype" value="Entity"/>
 			<map name="template" value="dot/er.ftl" />
-			<map name="destination" value="../generated/${entity.namespace}/dot/er.dot"/> 
+			<map name="groupby" value="namespace"/>
+			<map name="destination" value="../generated/${groupkey}/dot/er.dot"/> 
 			<map name="copy" value="injectCustom" />
 		</transform>
 		-->
