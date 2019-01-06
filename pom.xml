@@ -1,0 +1,85 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>pt.quintans</groupId>
+	<artifactId>mda-model-example</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>mda-model-example</name>
+
+	<properties>
+		<transformer.version>1.0.0-SNAPSHOT</transformer.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>pt.quintans</groupId>
+			<artifactId>mda</artifactId>
+			<version>1.2.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>pt.quintans.mda.transformers</groupId>
+			<artifactId>mda-enterprise-transformer</artifactId>
+			<version>${transformer.version}</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>3.1.1</version>
+				<configuration>
+					<artifactItems>
+						<artifactItem>
+							<groupId>pt.quintans.mda.transformers</groupId>
+							<artifactId>mda-enterprise-transformer</artifactId>
+							<version>${transformer.version}</version>
+							<type>jar</type>
+							<overWrite>true</overWrite>
+							<outputDirectory>${project.build.directory}</outputDirectory>
+							<includes>**/*.xsd</includes>
+						</artifactItem>
+					</artifactItems>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.6.0</version>
+				<executions>
+					<execution>
+						<id>db</id>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+							<mainClass>pt.quintans.mda.StartUp</mainClass>
+							<arguments>
+								<argument>-w</argument>
+								<argument>workflow/workflowBDB.xml</argument>
+							</arguments>
+						</configuration>
+					</execution>
+					<execution>
+						<id>be</id>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+							<mainClass>pt.quintans.mda.StartUp</mainClass>
+							<arguments>
+								<argument>-w</argument>
+								<argument>workflow/workflowB.xml</argument>
+							</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+
+</project>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://www.mda.quintans.pt" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.mda.quintans.pt http://www.mda.quintans.pt/dsl/domainmapping.xsd" 
+name="java">
+	<mapping model="identity" domain="Long"/>
+	<mapping model="boolean" domain="Boolean" type="boolean"/>
+	<mapping model="string" domain="String" instance='"%s"'/>
+	<mapping model="tiny" domain="Byte" type="byte"/>
+	<mapping model="short" domain="Short" type="short"/>
+	<mapping model="integer" domain="Integer" type="int"/>
+	<mapping model="long" domain="Long" type="long"/>
+	<mapping model="decimal" domain="Double" type="double"/>
+	<mapping model="currency" domain="java.math.BigDecimal"/>
+	<mapping model="list" domain="java.util.List"/>
+	<mapping model="date" domain="pt.armis.toolkit.type.MyDate"/>
+	<mapping model="time" domain="pt.armis.toolkit.type.MyDate"/>
+    <!-- mapping model="datetime" domain="pt.armis.toolkit.type.MyDateTime"/-->
+	<mapping model="timestamp" domain="java.util.Date"/>
+	<mapping model="bin" domain="byte[]"/>
+	<mapping model="text" domain="String"/>
+	
+	<mapping model="flags" domain="String"/>
+</mappings>

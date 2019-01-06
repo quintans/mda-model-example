@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity xmlns="http://www.mda.quintans.pt" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.mda.quintans.pt http://www.mda.quintans.pt/enterprise/xsd/entity.xsd" 
+name="Patient" id="ab84bfba-6889-4699-a7b6-7c4bd2609f67" comments="Patient" parent="Patient" root="true">
+	<attributes>
+		<identity name="id" id="c4c30f0b-d10b-457e-8ffa-3011c59e03cf"/>
+	</attributes>
+
+</entity>

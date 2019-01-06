@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow xmlns="http://www.mda.quintans.pt" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.mda.quintans.pt http://www.mda.quintans.pt/dsl/workflow.xsd">
+
+	<transformation>
+
+		<transform type="pt.quintans.mda.transformers.EmptyTransformer" description="Definicao de variaveis globais">
+			<map name="rootdir" value="./" save="true"/>
+			<map name="subnamespace" value="com.babylonhealth" save="true"/>
+			<map name="subpath" value="com/babylonhealth" save="true"/>
+			<map name="templateFolder" value="../templates"/>
+			<map name="domainmappings" value="javamapping.xml, protomapping.xml"/>
+		</transform>
+
+		<transform type="pt.quintans.mda.enterprise.transformers.FileSystemTransformer" description="Loading Model">
+			<map name="modelPath" value="../models/be-model"/>
+			<list name="loaders">
+				<map name="Entity" value="pt.quintans.mda.raw.domain.Entity" save="true"/>
+				<map name="LOV" value="pt.quintans.mda.raw.domain.ListOfValues" save="true"/>
+			</list>
+			<list name="transformers">
+				<map name="Entity" value="pt.quintans.mda.enterprise.custom.EntityTransformer"/>
+				<map name="LOV" value="pt.quintans.mda.enterprise.custom.LovTransformer"/>
+			</list>
+		</transform>
+
+		<!-- 
+		<transform type="pt.quintans.mda.custom.AllModel2Text" description="Entities">
+			<map name="stereotype" value="Entity"/>
+			<map name="template" value="java/Entity.ftl" />
+			<map name="destination" value="%{rootdir}/target/generated-sources/java/%{subpath}/${entity.namespace}/%{name}.java"/> 
+			<map name="copy" value="overwrite" />
+		</transform>
+		-->
+		
+		<transform type="pt.quintans.mda.custom.AllModel2Text" description="Proto Key">
+			<map name="stereotype" value="Entity"/>
+			<map name="template" value="proto/ProtoKey.ftl" />
+			<map name="destination" value="../generated/Proto%{name}Key.proto"/> 
+			<map name="copy" value="overwrite" />
+		</transform>
+		
+		<transform type="pt.quintans.mda.custom.AllModel2Text" description="Proto Value">
+			<map name="stereotype" value="Entity"/>
+			<map name="template" value="proto/ProtoValue.ftl" />
+			<map name="destination" value="../generated/Proto%{name}Value.proto"/> 
+			<map name="copy" value="overwrite" />
+		</transform>
+
+	</transformation>
+		
+</workflow>

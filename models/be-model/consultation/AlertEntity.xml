@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity xmlns="http://www.mda.quintans.pt" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.mda.quintans.pt http://www.mda.quintans.pt/enterprise/xsd/entity.xsd" 
+name="Alert" id="c1113d3c-c815-4eb8-8864-3b5705c93eac" comments="An alert in consultations" parent="Patient">
+	<attributes>
+		<identity name="id" id="9ccabd27-19f1-4988-8de9-cfdc1d50afef"/>
+        <string name="message" comments="alert message" id="19b1e796-7f99-4312-be1f-a2aa55f0c77e"/>
+	</attributes>
+
+</entity>

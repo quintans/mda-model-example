@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow xmlns="http://www.mda.quintans.pt" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.mda.quintans.pt http://www.mda.quintans.pt/dsl/workflow.xsd">
+
+	<transformation>
+		<transform type="pt.quintans.mda.transformers.EmptyTransformer" description="Global variables definition">
+			<map name="templateFolder" value="../templates"/>
+			<map name="domainmappings" value="mysqlmapping.xml"/>
+		</transform>
+		
+		<transform type="pt.quintans.mda.enterprise.transformers.FileSystemTransformer" description="Loading Module">
+			<map name="modelPath" value="../models/be-model"/>
+ 			<map name="modelPathOld" value="../models/be-modelOld"/>
+			<list name="loaders">
+				<map name="Entity" value="pt.quintans.mda.raw.domain.Entity" save="true"/>
+				<map name="LOV" value="pt.quintans.mda.raw.domain.ListOfValues" save="true"/>
+			</list>
+			<list name="transformers">
+				<map name="Entity" value="pt.quintans.mda.enterprise.custom.EntityTransformer"/>
+				<map name="LOV" value="pt.quintans.mda.enterprise.custom.LovTransformer"/>
+			</list>
+		</transform>
+
+		<transform type="pt.quintans.mda.custom.AllInOneM2T" description="SQL DROP for tables">
+			<map name="stereotype" value="Entity"/>
+			<map name="template" value="mysql/TableDrop.ftl" />
+			<map name="groupby" value="namespace"/> 
+			<map name="destination" value="../generated/${group}/sql/00_drop_tables.sql"/> 
+			<map name="copy" value="overwrite" />
+		</transform>
+		<!-- 
+		<transform type="pt.quintans.mda.custom.AllInOneM2T" description="Table description">
+			<map name="stereotype" value="Entity"/>
+			<map name="template" value="mysql/TableDescribe.ftl" />
+			<map name="destination" value="../generated/${entity.namespace}/html/tables.html"/> 
+			<map name="copy" value="overwrite" />
+		</transform>
+
+		<transform type="pt.quintans.mda.enterprise.custom.AllInOneMigrateM2T" description="Table SQL">
+			<map name="stereotype" value="Entity"/>
+			<map name="template" value="mysql/Tables.ftl" />
+			<map name="destination" value="../generated/${entity.namespace}/sql/01_create.sql"/> 
+			<map name="copy" value="overwrite" />
+		</transform>
+		
+		<transform type="pt.quintans.mda.custom.AllModel2Text" description="Constraints SQL">
+			<map name="stereotype" value="Entity"/>
+			<map name="template" value="mysql/Constraint.ftl" />
+			<map name="destination" value="../generated/${entity.namespace}/sql/01_create.sql"/> 
+			<map name="copy" value="append" />
+		</transform>
+
+		<transform type="pt.quintans.mda.custom.AllModel2Text" description="FKs Indexes SQL">
+			<map name="stereotype" value="Entity"/>
+			<map name="template" value="mysql/IndexFk.ftl" />
+			<map name="destination" value="../generated/${entity.namespace}/sql/01_create.sql"/> 
+			<map name="copy" value="append" />
+		</transform>
+
+		<transform type="pt.quintans.mda.enterprise.custom.AllInOneMigrateM2T" description="PRE Constraints Migration SQL">
+			<map name="stereotype" value="Entity"/>
+			<map name="template" value="mysql/ConstraintMigratePRE.ftl" />
+			<map name="destination" value="../generated/${entity.namespace}/sql_migrate/01_constraintsMigratePRE.sql"/> 
+			<map name="copy" value="overwrite" />
+		</transform>
+
+		<transform type="pt.quintans.mda.enterprise.custom.AllInOneMigrateM2T" description="Table Migration SQL">
+			<map name="stereotype" value="Entity"/>
+			<map name="template" value="mysql/TableMigrate.ftl" />
+			<map name="destination" value="../generated/${entity.namespace}/sql_migrate/02_tablesMigrate.sql"/> 
+			<map name="copy" value="overwrite" />
+		</transform>
+
+		<transform type="pt.quintans.mda.enterprise.custom.AllInOneMigrateM2T" description="POS Constraints Migration SQL">
+			<map name="stereotype" value="Entity"/>
+			<map name="template" value="mysql/ConstraintMigratePOS.ftl" />
+			<map name="destination" value="../generated/${entity.namespace}/sql_migrate/03_constraintsMigratePOS.sql"/> 
+			<map name="copy" value="overwrite" />
+		</transform>
+
+        <transform type="pt.quintans.mda.custom.AllInOneM2T" description="Classes (ER) Diagram">
+            <map name="stereotype" value="Entity"/>
+            <map name="template" value="dot/classes.pu.ftl" />
+            <map name="destination" value="../generated/${entity.namespace}/dot_classes.pu"/> 
+            <map name="copy" value="overwrite" />
+        </transform>
+
+		<transform type="pt.quintans.mda.custom.AllInOneM2T" description="small UML dot">
+			<map name="stereotype" value="Entity"/>
+			<map name="template" value="dot/uml_small.ftl" />
+			<map name="destination" value="../generated/${entity.namespace}/dot_uml_small.dot"/> 
+			<map name="copy" value="injectCustom" />
+		</transform>
+		
+		<transform type="pt.quintans.mda.custom.AllInOneM2T" description="ER dot">
+			<map name="stereotype" value="Entity"/>
+			<map name="template" value="dot/er.ftl" />
+			<map name="destination" value="../generated/${entity.namespace}/dot/er.dot"/> 
+			<map name="copy" value="injectCustom" />
+		</transform>
+		-->
+
+	</transformation>
+
+</workflow>

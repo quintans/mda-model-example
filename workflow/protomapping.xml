@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://www.mda.quintans.pt" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.mda.quintans.pt http://www.mda.quintans.pt/dsl/domainmapping.xsd" 
+name="proto">
+	<mapping model="identity" domain="google.protobuf.StringValue"/>
+	<mapping model="boolean" domain="bool"/>
+	<mapping model="string" domain="google.protobuf.StringValue"/>
+	<mapping model="tiny" domain="int32"/>
+	<mapping model="short" domain="int32"/>
+	<mapping model="integer" domain="int32"/>
+    <mapping model="long" domain="int64"/>
+	<mapping model="decimal" domain="double"/>
+	<mapping model="currency" domain="double"/>
+	<mapping model="list" domain="Array"/>
+	<mapping model="date" domain="google.protobuf.Timestamp"/>
+	<mapping model="time" domain="google.protobuf.Timestamp"/>
+	<mapping model="timestamp" domain="google.protobuf.Timestamp"/>
+</mappings>

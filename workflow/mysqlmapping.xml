@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://www.mda.quintans.pt" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.mda.quintans.pt http://www.mda.quintans.pt/dsl/domainmapping.xsd" 
+name="database">
+	<mapping model="identity" domain="BIGINT" type="BIGINT" />
+	<mapping model="string" domain="VARCHAR" />
+	<mapping model="integer" domain="INTEGER" />
+    <mapping model="long" domain="BIGINT" />
+	<mapping model="boolean" domain="BOOL" />
+	<mapping model="date" domain="TIMESTAMP" />
+    <mapping model="timestamp" domain="TIMESTAMP" />
+	<mapping model="decimal" domain="DOUBLE" />
+	<mapping model="currency" domain="DECIMAL(18,4)"/>
+	<mapping model="bin" domain="LONGBLOB" />
+	<mapping model="text" domain="LONGTEXT" />
+	<!-- function mapping -->
+	<mapping model="count" domain="COUNT" />
+	<mapping model="sum" domain="SUM" />
+	<mapping model="max" domain="MAX" />
+	<mapping model="min" domain="MIN" />
+</mappings>
