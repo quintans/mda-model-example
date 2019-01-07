@@ -1,5 +1,6 @@
 <#ftl encoding="UTF-8">
 <#import "/mylib.ftl" as mylib>
+<#list Group as entity>
 <#if !entity.readOnly>
 <#if !entity.root>
 <#assign tabname = mylib.dbSchemaTableName(entity.alias)>
@@ -23,3 +24,4 @@ CREATE INDEX `${mylib.dbName('I'+cnt+'_'+tabname)}` ON `${tabname}` (${cols});
     </#list>
 </#if>
 </#if>
+</#list>

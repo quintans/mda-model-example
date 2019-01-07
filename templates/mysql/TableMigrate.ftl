@@ -170,7 +170,7 @@ ALTER TABLE ${mylib.dbSchemaTableName(association.entity.alias)} MODIFY ${mylib.
 	</#if>
 <#flush>
 	<#else>
--- nova entidade "${entity.name}"
+-- new entity "${entity.name}"
 <#include "Table.ftl">
 CREATE SEQUENCE ${mylib.chop(mylib.dbUpperName(entity.alias), 4)}_GEN;
 	</#if>

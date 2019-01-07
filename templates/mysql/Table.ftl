@@ -67,6 +67,5 @@ ENGINE=InnoDB
 DEFAULT CHARSET=utf8;
 	</#if>
 </#list>
-
 </#if>
 </#if>

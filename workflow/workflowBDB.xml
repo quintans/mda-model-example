@@ -45,39 +45,43 @@ xsi:schemaLocation="http://www.mda.quintans.pt http://www.mda.quintans.pt/dsl/wo
 			<map name="copy" value="overwrite" />
 		</transform>
 		
-		<!-- 
-		<transform type="pt.quintans.mda.custom.AllModel2Text" description="Constraints SQL">
+		<transform type="pt.quintans.mda.custom.AllInOneM2T" description="Constraints SQL">
 			<map name="stereotype" value="Entity"/>
-			<map name="template" value="mysql/Constraint.ftl" />
-			<map name="destination" value="../generated/${entity.namespace}/sql/01_create.sql"/> 
+			<map name="template" value="mysql/Constraints.ftl" />
+			<map name="groupby" value="namespace"/> 
+			<map name="destination" value="../generated/${groupkey}/sql/01_create.sql"/> 
 			<map name="copy" value="append" />
 		</transform>
 
-		<transform type="pt.quintans.mda.custom.AllModel2Text" description="FKs Indexes SQL">
+		<transform type="pt.quintans.mda.custom.AllInOneM2T" description="FKs Indexes SQL">
 			<map name="stereotype" value="Entity"/>
 			<map name="template" value="mysql/IndexFk.ftl" />
-			<map name="destination" value="../generated/${entity.namespace}/sql/01_create.sql"/> 
+			<map name="groupby" value="namespace"/> 
+			<map name="destination" value="../generated/${groupkey}/sql/01_create.sql"/> 
 			<map name="copy" value="append" />
 		</transform>
 
 		<transform type="pt.quintans.mda.enterprise.custom.AllInOneMigrateM2T" description="PRE Constraints Migration SQL">
 			<map name="stereotype" value="Entity"/>
 			<map name="template" value="mysql/ConstraintMigratePRE.ftl" />
-			<map name="destination" value="../generated/${entity.namespace}/sql_migrate/01_constraintsMigratePRE.sql"/> 
+			<map name="groupby" value="namespace"/> 
+			<map name="destination" value="../generated/${groupkey}/sql_migrate/01_constraintsMigratePRE.sql"/> 
 			<map name="copy" value="overwrite" />
 		</transform>
 
 		<transform type="pt.quintans.mda.enterprise.custom.AllInOneMigrateM2T" description="Table Migration SQL">
 			<map name="stereotype" value="Entity"/>
 			<map name="template" value="mysql/TableMigrate.ftl" />
-			<map name="destination" value="../generated/${entity.namespace}/sql_migrate/02_tablesMigrate.sql"/> 
+			<map name="groupby" value="namespace"/>
+			<map name="destination" value="../generated/${groupkey}/sql_migrate/02_tablesMigrate.sql"/> 
 			<map name="copy" value="overwrite" />
 		</transform>
 
 		<transform type="pt.quintans.mda.enterprise.custom.AllInOneMigrateM2T" description="POS Constraints Migration SQL">
 			<map name="stereotype" value="Entity"/>
 			<map name="template" value="mysql/ConstraintMigratePOS.ftl" />
-			<map name="destination" value="../generated/${entity.namespace}/sql_migrate/03_constraintsMigratePOS.sql"/> 
+			<map name="groupby" value="namespace"/>
+			<map name="destination" value="../generated/${groupkey}/sql_migrate/03_constraintsMigratePOS.sql"/> 
 			<map name="copy" value="overwrite" />
 		</transform>
 
@@ -93,7 +97,7 @@ xsi:schemaLocation="http://www.mda.quintans.pt http://www.mda.quintans.pt/dsl/wo
 			<map name="stereotype" value="Entity"/>
 			<map name="template" value="dot/uml_small.ftl" />
 			<map name="groupby" value="namespace"/> 
-			<map name="destination" value="../generated/${groupkey}/dot_uml_small.dot"/> 
+			<map name="destination" value="../generated/${groupkey}/dot/dot_uml_small.dot"/> 
 			<map name="copy" value="injectCustom" />
 		</transform>
 		
@@ -104,7 +108,6 @@ xsi:schemaLocation="http://www.mda.quintans.pt http://www.mda.quintans.pt/dsl/wo
 			<map name="destination" value="../generated/${groupkey}/dot/er.dot"/> 
 			<map name="copy" value="injectCustom" />
 		</transform>
-		-->
 
 	</transformation>
 
