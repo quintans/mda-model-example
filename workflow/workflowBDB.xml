@@ -89,7 +89,7 @@ xsi:schemaLocation="http://www.mda.quintans.pt http://www.mda.quintans.pt/dsl/wo
             <map name="stereotype" value="Entity"/>
             <map name="template" value="dot/classes.pu.ftl" />
             <map name="groupby" value="namespace"/> 
-            <map name="destination" value="../generated/${groupkey}/dot_classes.pu"/> 
+            <map name="destination" value="../generated/${groupkey}/dot/dot_classes.pu"/>
             <map name="copy" value="overwrite" />
         </transform>
 
