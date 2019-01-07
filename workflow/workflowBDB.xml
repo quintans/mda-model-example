@@ -37,7 +37,7 @@ xsi:schemaLocation="http://www.mda.quintans.pt http://www.mda.quintans.pt/dsl/wo
 			<map name="copy" value="overwrite" />
 		</transform>
 
-		<transform type="pt.quintans.mda.enterprise.custom.AllInOneMigrateM2T" description="Table SQL">
+		<transform type="pt.quintans.mda.custom.AllInOneM2T" description="Table SQL">
 			<map name="stereotype" value="Entity"/>
 			<map name="template" value="mysql/Tables.ftl" />
 			<map name="groupby" value="namespace"/> 
