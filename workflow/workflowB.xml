@@ -36,17 +36,23 @@ xsi:schemaLocation="http://www.mda.quintans.pt http://www.mda.quintans.pt/dsl/wo
 		<transform type="pt.quintans.mda.custom.AllModel2Text" description="Proto Key">
 			<map name="stereotype" value="Entity"/>
 			<map name="template" value="proto/ProtoKey.ftl" />
-			<map name="destination" value="../generated/Proto%{name}Key.proto"/> 
+			<map name="destination" value="../generated/${entity.namespace}/Proto%{name}Key.proto"/>
 			<map name="copy" value="overwrite" />
 		</transform>
 		
 		<transform type="pt.quintans.mda.custom.AllModel2Text" description="Proto Value">
 			<map name="stereotype" value="Entity"/>
 			<map name="template" value="proto/ProtoValue.ftl" />
-			<map name="destination" value="../generated/Proto%{name}Value.proto"/> 
+			<map name="destination" value="../generated/${entity.namespace}/Proto%{name}Value.proto"/>
 			<map name="copy" value="overwrite" />
 		</transform>
 
+		<transform type="pt.quintans.mda.custom.AllModel2Text" description="Proto Value">
+			<map name="stereotype" value="Entity"/>
+			<map name="template" value="proto/ProtoValueFilter.ftl" />
+			<map name="destination" value="../generated/${entity.namespace}/Proto%{name}ValueFilter.proto"/>
+			<map name="copy" value="overwrite" />
+		</transform>
 	</transformation>
 		
 </workflow>
