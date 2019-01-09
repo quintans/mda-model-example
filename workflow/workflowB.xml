@@ -47,7 +47,7 @@ xsi:schemaLocation="http://www.mda.quintans.pt http://www.mda.quintans.pt/dsl/wo
 			<map name="copy" value="overwrite" />
 		</transform>
 
-		<transform type="pt.quintans.mda.custom.AllModel2Text" description="Proto Value">
+		<transform type="pt.quintans.mda.custom.AllModel2Text" description="Proto Value Filter">
 			<map name="stereotype" value="Entity"/>
 			<map name="template" value="proto/ProtoValueFilter.ftl" />
 			<map name="destination" value="../generated/${entity.namespace}/Proto%{name}ValueFilter.proto"/>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity xmlns="http://www.mda.quintans.pt" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.mda.quintans.pt http://www.mda.quintans.pt/enterprise/xsd/entity.xsd" 
+name="Dummy" id="9f104038-6831-4c89-8a37-5c78a9bf539f">
+	<attributes>
+		<identity name="id" id="8498318b-014e-40fd-9eb9-be066f2ddee1"/>
+        <string name="note" id="d5352413-7479-4c40-b986-e98b564856c0"/>
+	</attributes>
+
+	<associations>
+		<hasOne name="alert" id="76b30025-a2c0-4ff3-a4ca-4c9575c42430" entity="Alert"/>
+	</associations>
+</entity>

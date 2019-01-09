@@ -11,7 +11,9 @@ package ${subnamespace}.${entity.namespace};
 
 import "google/protobuf/wrappers.proto";
 
-<#if (entity.comment)??>// $entity.comment</#if>
+<#if (entity.comment)??>
+// $entity.comment
+</#if>
 message Proto${entity.name}Value {
 	<#list entity.attributes as attribute>
     ${proto[attribute.type]} ${attribute.name} = ${attribute?index + 1};

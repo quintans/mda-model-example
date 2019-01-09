@@ -1,53 +1,43 @@
 <#ftl encoding="UTF-8">
 <#import "/mylib.ftl" as mylib>
-<#macro column attr type len>
-			<tr><td align="left">${mylib.dbColumnName(attr.alias)}<#if !attr.nullable>*</#if></td><td align="left">${type}<#if len!=0>(${len})</#if></td></tr>
-</#macro>
 digraph G {
-        fontname = "Arial"
+        fontname = "Sans Not-Rotated"
         fontsize = 8
         pad = 0.5
 
         graph [splines=ortho overlap=false]
-        node [
-        	shape="plaintext" 
-	        fontname = "Arial"
-	        fontsize = 8
-	        color=black
-	    ]
+        node [fontname="Sans Not-Rotated" shape="record" style=filled fillcolor=lightyellow color=black]
 <#list Entity as entity>
 <#if !entity.root>
 
-        "${entity.name}" [label=<
-        <table bgcolor="lightyellow" border="1" cellborder="0" cellspacing="1">
-			<tr><td align="center" colspan="2"><b>${mylib.dbTable2ColumnName(entity.alias)}</b></td></tr>
-			<tr><td align="left">ID*</td><td align="left">${database['identity']}</td></tr>
+<@mylib.compress_single_line>
+        "${entity.name}" [label="{${mylib.dbTable2ColumnName(entity.alias)}|ID ${database['identity']} NOT NULL (PK)\l
 <#list entity.attributes as attribute>
 <#if !attribute.key>
 	<#if attribute.lov??>
 		<#if attribute.lov.numeric>
-			<@column attr=attribute type=database['integer'] len=attribute.lov.keylen!2/>
+${mylib.dbColumnName(attribute.alias)} ${database['integer']}(<#if attribute.lov.keylen??>${attribute.lov.keylen?c}<#else>2</#if>)<#if !attribute.nullable> NOT NULL</#if>\l
 		<#else>
-			<@column attr=attribute type=database['string'] len=attribute.lov.keylen!2/>
+${mylib.dbColumnName(attribute.alias)} ${database['string']}(<#if attribute.lov.keylen??>${attribute.lov.keylen?c}<#else>2</#if>)<#if !attribute.nullable> NOT NULL</#if>\l
 		</#if>
 	<#elseif attribute.type == 'string'>
-			<@column attr=attribute type=database['string'] len=attribute.length!255/>
+${mylib.dbColumnName(attribute.alias)} ${database['string']}(<#if attribute.length??>${attribute.length?c}<#else>255</#if>)<#if !attribute.nullable> NOT NULL</#if>\l
 	<#else>
 		<#if !database[attribute.type]??>
 	<@log out='UNDEFINED attribute: '+entity.name+'.'+attribute.name+':'+attribute.type/>
 		</#if>
-			<@column attr=attribute type=database[attribute.type] len=attribute.length!0/>
+${mylib.dbColumnName(attribute.alias)} ${database[attribute.type]}<#if attribute.length??>(${attribute.length?c})</#if><#if !attribute.nullable> NOT NULL</#if>\l
 	</#if>
 </#if>
 </#list>
+<#assign sep="0">
 <#list entity.associations as x>
 	<#-- ONE to ONE (not owner) ou MANY to ONE-->
 	<#if !x.many && !x.fromTarget.many && !x.owner || !x.many && x.fromTarget.many>
-			<@column attr=x type=database['identity'] len=attribute.length!0/>
+	<#if sep == "0"><#assign sep="1">|</#if>${mylib.dbTable2ColumnName(x.alias)} ${database['identity']}<#if !x.nullable> NOT NULL</#if> (FK)\l
 	</#if>
-</#list>
-   		</table>
-		>]
+</#list>}"]
+</@mylib.compress_single_line>
 </#if>
 </#list>
 

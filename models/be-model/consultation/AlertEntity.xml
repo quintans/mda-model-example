@@ -6,5 +6,9 @@ name="Alert" id="c1113d3c-c815-4eb8-8864-3b5705c93eac" comments="An alert in con
 		<identity name="id" id="9ccabd27-19f1-4988-8de9-cfdc1d50afef"/>
         <string name="message" comments="alert message" id="19b1e796-7f99-4312-be1f-a2aa55f0c77e"/>
 	</attributes>
+	
+	<associations>
+		<hasMany name="dummies" id="fc146a19-3d01-47cb-8be8-d09358b60b14" entity="Dummy"/>
+	</associations>
 
 </entity>

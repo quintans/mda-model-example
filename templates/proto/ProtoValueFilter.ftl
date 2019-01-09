@@ -11,13 +11,37 @@ package ${subnamespace}.${entity.namespace};
 
 import "google/protobuf/wrappers.proto";
 
-message Proto${entity.name}ValueFilter {
+message Proto${entity.name}Query {
+    ProtoPagination pagination = 1;
+	ProtoAlertFilter filter = 2;
+}
+
+message Proto${entity.name}Filter {
+	<#if entity.identity??>
+	${proto[entity.identity.type]} ${entity.identity.name} = 1;
+	</#if>
 	<#list entity.attributes as attribute>
-    ${proto[attribute.type]} ${attribute.name} = ${attribute?index*100 + 1};
-    ${proto[attribute.type]} ${attribute.name}_IN = ${attribute?index*100 + 2};
-    ${proto[attribute.type]} ${attribute.name}_MAX = ${attribute?index*100 + 3};
-    ${proto[attribute.type]} ${attribute.name}_FROM = ${attribute?index*100 + 4};
-    ${proto[attribute.type]} ${attribute.name}_TO = ${attribute?index*100 + 5};
+    Proto${entity.name}${attribute.name?cap_first} ${attribute.name} = ${attribute?index + 2};
+    </#list>
+}
+
+<#list entity.attributes as attribute>
+message Proto${entity.name}${attribute.name?cap_first}Filter {
+    ${proto[attribute.type]} EQ = 1
+    google.protobuf.BoolValue ASC = 2;
+    repeat ${proto[attribute.type]} IN = 3;
+    google.protobuf.BoolValue MAX = 4;
+    ${proto[attribute.type]} FROM = 5;
+    ${proto[attribute.type]} TO = 6;
+}
+</#list>
+
+message Proto${entity.name}Return {
+	<#if entity.identity??>
+	google.protobuf.BoolValue ${entity.identity.name} = 1;
+	</#if>
+	<#list entity.attributes as attribute>
+    google.protobuf.BoolValue ${attribute.name} = ${attribute?index + 2};
     </#list>
 }
 </#if>
