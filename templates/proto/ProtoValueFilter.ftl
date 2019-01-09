@@ -27,7 +27,7 @@ message Proto${entity.name}Filter {
 
 <#list entity.attributes as attribute>
 message Proto${entity.name}${attribute.name?cap_first}Filter {
-    ${proto[attribute.type]} EQ = 1
+    ${proto[attribute.type]} EQ = 1;
     google.protobuf.BoolValue ASC = 2;
     repeat ${proto[attribute.type]} IN = 3;
     google.protobuf.BoolValue MAX = 4;
